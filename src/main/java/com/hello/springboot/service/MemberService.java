@@ -3,9 +3,12 @@ package com.hello.springboot.service;
 import com.hello.springboot.domain.Member;
 import com.hello.springboot.repository.MemberRepository;
 import com.hello.springboot.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 
 public class MemberService {
 
@@ -27,7 +30,7 @@ public class MemberService {
     private void getValidateDuplicatemember(Member member) {
         memberRepository.findByName(member.getName())
                 .ifPresent(m -> {
-                    throw new IllegalStateException(m.getId() + "는 이미 존재하는 회원입니다.");
+                    throw new IllegalStateException(m.getId() + "은 이미 존재하는 회원입니다.");
                 });
     }
 
